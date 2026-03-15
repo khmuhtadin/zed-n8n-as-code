@@ -12,6 +12,8 @@ Native Zed extension scaffold for `n8n-as-code`.
 - Exposes an MCP server entry named `n8nac`
 - Executes the existing `n8nac` CLI as backend from the extension runtime
 - Returns real command output into the Zed assistant slash-command result
+- Provides workflow-id and local filename completions by parsing `n8nac list`
+- Surfaces command exit status in a cleaner, more daily-usable output format
 
 ## Architecture
 - **Zed extension layer**: Rust + WebAssembly, registered through `extension.toml`
