@@ -10,7 +10,8 @@ Native Zed extension scaffold for `n8n-as-code`.
   - `/n8n-verify <workflowId>`
   - `/n8n-validate <filename.workflow.ts>`
 - Exposes an MCP server entry named `n8nac`
-- Uses the existing `n8nac` CLI as backend so the extension stays thin while giving Zed a native integration point
+- Executes the existing `n8nac` CLI as backend from the extension runtime
+- Returns real command output into the Zed assistant slash-command result
 
 ## Architecture
 - **Zed extension layer**: Rust + WebAssembly, registered through `extension.toml`
