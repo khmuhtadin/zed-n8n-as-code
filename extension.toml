@@ -26,4 +26,16 @@ requires_argument = true
 description = "Validate a local .workflow.ts file"
 requires_argument = true
 
+[slash_commands.n8n-browse]
+description = "Browse n8n workflows with native rich output"
+requires_argument = false
+
+[slash_commands.n8n-status]
+description = "Show local/remote workflow diff status"
+requires_argument = false
+
+[slash_commands.n8n-config]
+description = "Show extension configuration and settings"
+requires_argument = false
+
 [context_servers.n8nac]
