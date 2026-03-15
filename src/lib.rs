@@ -1,5 +1,5 @@
 use std::env;
-use zed_extension_api as zed;
+use zed_extension_api::{self as zed, process::Command as ProcessCommand};
 
 struct N8nAsCodeExtension;
 
@@ -27,8 +27,11 @@ impl N8nAsCodeExtension {
             format!(" {}", args.join(" "))
         };
 
-        let mut command = zed::process::Command::new(self.cli_bin());
-        command = command.arg(subcommand).args(args.clone()).envs(self.workspace_env());
+        let mut command = ProcessCommand::new(self.cli_bin());
+        command = command
+            .arg(subcommand)
+            .args(args.clone())
+            .envs(self.workspace_env());
 
         let output = command.output()?;
         let stdout = String::from_utf8_lossy(&output.stdout).to_string();
@@ -134,7 +137,7 @@ impl zed::Extension for N8nAsCodeExtension {
         &mut self,
         context_server_id: &zed::ContextServerId,
         _project: &zed::Project,
-    ) -> Result<zed::Command> {
+    ) -> zed::Result<zed::Command> {
         if context_server_id.as_ref() != "n8nac" {
             return Err(format!(
                 "unknown context server: {}",
